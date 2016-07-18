@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="1dp"
+    android:background="@drawable/bg_gv"
+    android:orientation="horizontal" >
+    
+    <LinearLayout  
+        android:id="@+id/clean_menu"  
+        android:layout_width="0dp"  
+        android:layout_height="wrap_content"  
+        android:layout_weight="1" 
+        android:layout_marginLeft="80dp"
+        android:orientation="vertical"  
+        android:padding="3dp" >  
+
+        <ImageView  
+            android:id="@+id/heart_word_iv"  
+            android:layout_width="wrap_content"  
+            android:layout_height="wrap_content"  
+            android:layout_gravity="center_horizontal"  
+            android:src="@drawable/ic_toolbar_clean" />  
+
+        <TextView  
+            android:id="@+id/heart_word_tv"  
+            android:layout_width="match_parent"  
+            android:layout_height="wrap_content"  
+            android:gravity="center_horizontal"  
+            android:text="@string/clean_word"  
+            android:textColor="@color/black"  
+            android:textSize="10dip" />  
+    </LinearLayout>  
+        
+    <LinearLayout  
+            android:id="@+id/menu_item"  
+            android:layout_width="0dp"  
+            android:layout_height="wrap_content"  
+            android:layout_weight="1" 
+            android:layout_marginRight="80dp"
+            android:orientation="vertical"  
+            android:padding="3dp" >  
+  
+            <ImageView  
+                android:id="@+id/menu_word_iv"  
+                android:layout_width="wrap_content"  
+                android:layout_height="wrap_content"  
+                android:layout_gravity="center_horizontal"  
+                android:src="@drawable/ic_toolbar_menu" />  
+  
+            <TextView  
+                android:id="@+id/menu_word_tv"  
+                android:layout_width="match_parent"  
+                android:layout_height="wrap_content"  
+                android:gravity="center_horizontal"  
+                android:text="@string/menu_word"  
+                android:textColor="@color/black"  
+                android:textSize="10dip" />  
+        </LinearLayout>  
+
+</LinearLayout>

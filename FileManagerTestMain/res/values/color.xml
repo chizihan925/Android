@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="red">#FF0000</color>
+    <color name="wight">#FFFFFF</color>
+    <color name="gray">#BFBFBF</color>
+    <color name="black">#000000</color>
+    <color name="griditems_bg">#ffe8ecef</color>
+    <color name="line">#ffd3dde6</color>
+    <color name="menu">#F8F8F8</color>
+    
+</resources>
