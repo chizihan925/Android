@@ -33,9 +33,14 @@ public class ChatFragmentReal extends Fragment implements OnItemClickListener {
 		v = inflater.inflate(R.layout.lattice_main, container, false);
 		super.onCreate(savedInstanceState);
 		mContext = getActivity();
+		return v;
+	}
+	
+	@Override
+	public void onActivityCreated(Bundle savedInstanceState) {
+		super.onActivityCreated(savedInstanceState);
 		init();
 		initCircleView();
-		return v;
 	}
 
 	private void init() {
