@@ -15,6 +15,9 @@
         android:background="@color/wight" >
     </android.support.v4.view.ViewPager>
 
-    <include layout="@layout/menu_main" />
+    <include 
+        android:id="@+id/bottom_item"
+        android:visibility="visible"
+        layout="@layout/menu_main" />
 
 </LinearLayout>
