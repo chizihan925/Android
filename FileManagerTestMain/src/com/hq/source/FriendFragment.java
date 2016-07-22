@@ -8,6 +8,7 @@ import com.hq.filemanagertestmain.R;
 import com.hq.filemanagertestmain.StorageState;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -54,12 +55,7 @@ public class FriendFragment extends Fragment {
 	private void addFragment(Fragment fragment, String Tag) {
 		FragmentTransaction fragmentManager = FriendFragment.this.getActivity()
 				.getSupportFragmentManager().beginTransaction();
-//		FragmentTransaction fragmentManager = getChildFragmentManager().beginTransaction();
-		Log.d("chiguoqing", "addFragment" + fragment.getId());
-//		fragmentManager.hide(FriendFragment.this);
-		Log.d("chiguoqing", "addFragment----hide");
 		fragmentManager.add(R.id.local_second, fragment, Tag);
-		Log.d("chiguoqing", "addFragment----add +" + Tag);
 		fragmentManager.addToBackStack(null);
 		fragmentManager.commit();
 	}
@@ -100,9 +96,12 @@ public class FriendFragment extends Fragment {
 				if (position == 0) {
 					InternalStorageFragment fragment1 = new InternalStorageFragment();
 					addFragment(fragment1, "InternalStorageFragment");
+					Intent intent = new Intent("com.hq.data.DATA_TRANSMISSION");
+					intent.putExtra("data", 3);
+					mContext.sendBroadcast(intent);
 				} else if (position == 1) {
-					ChatFragment fragment2 = new ChatFragment();
-					addFragment(fragment2, "ChatFragment");
+					ChatFragmentReal fragment2 = new ChatFragmentReal();
+					addFragment(fragment2, "ChatFragmentReal");
 				}
 
 			}

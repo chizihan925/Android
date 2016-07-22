@@ -14,6 +14,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,9 +50,9 @@ public class GridViewItemClickFragment extends Fragment implements OnItemClickLi
 		init();
 		new MyAsncTask().execute();
 
-//		for (ClassificationList list : classificationLists) {
-//			Log.i("path", list.getDATE_MODIFIED());
-//		}
+		for (ClassificationList list : classificationLists) {
+			Log.d("path", list.getDATE_MODIFIED());
+		}
 
 		return v;
 	}

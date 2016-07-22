@@ -16,8 +16,20 @@
     </android.support.v4.view.ViewPager>
 
     <include 
-        android:id="@+id/bottom_item"
+        android:id="@+id/bottom_item1"
         android:visibility="visible"
-        layout="@layout/menu_main" />
+        layout="@layout/bottom_item_clear_menu" />
+    <include 
+        android:id="@+id/bottom_item2"
+        android:visibility="gone"
+        layout="@layout/bottom_item_del_menu" />
+    <include 
+        android:id="@+id/bottom_item3"
+        android:visibility="gone"
+        layout="@layout/bottom_item_del_copy_clip_menu" />
+    <include 
+        android:id="@+id/bottom_item4"
+        android:visibility="gone"
+        layout="@layout/bottom_item_menu" />
 
 </LinearLayout>

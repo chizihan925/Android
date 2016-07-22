@@ -1,13 +1,18 @@
 package com.hq.source;
 
 import com.hq.adapter.MyGridAdapter;
+import com.hq.filemanagertestmain.FileMainActivity;
 import com.hq.filemanagertestmain.R;
 import com.hq.view.CircleView;
 import com.hq.view.MyGridView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +25,7 @@ public class ChatFragmentReal extends Fragment implements OnItemClickListener {
 	private View v;
 	private MyGridView gridview;
 	private Context mContext;
-
+	
 	public static int gridSelect;
 
 	private Fragment gridviewclickfragmenmt;
@@ -33,6 +38,7 @@ public class ChatFragmentReal extends Fragment implements OnItemClickListener {
 		v = inflater.inflate(R.layout.lattice_main, container, false);
 		super.onCreate(savedInstanceState);
 		mContext = getActivity();
+		
 		return v;
 	}
 	
@@ -44,19 +50,17 @@ public class ChatFragmentReal extends Fragment implements OnItemClickListener {
 	}
 
 	private void init() {
+		
 		getResources().getStringArray(R.array.grid_name);
 
 		gridview = (MyGridView) getView().findViewById(R.id.gridview);
 		gridview.setAdapter(new MyGridAdapter(mContext));
-
-		// mGridView = (GridView) v.findViewById(R.id.mGridView);
-		// mGridView.setAdapter(new GridViewAdapter(getActivity(), item_name,
-		// image_resourse));
 		gridview.setOnItemClickListener(this);
 
 		gridviewclickfragmenmt = new GridViewItemClickFragment();
 		filemanger = getFragmentManager().beginTransaction();
-
+		
+		
 	};
 
 	@Override
@@ -85,7 +89,7 @@ public class ChatFragmentReal extends Fragment implements OnItemClickListener {
 		default:
 			break;
 		}
-
+		sendData();
 		filemanger.replace(R.id.chat_fragment, gridviewclickfragmenmt);
 		filemanger.addToBackStack(null);
 		filemanger.commit();
@@ -96,5 +100,27 @@ public class ChatFragmentReal extends Fragment implements OnItemClickListener {
 		FrameLayout circleMax = (FrameLayout) getView().findViewById(R.id.root);
 		circleMax.addView(new CircleView(mContext));
 	}
-
+	private void sendData(){
+		int i = 4;
+		switch (gridSelect) {
+		case 0:
+			i = 2;
+			break;
+		case 1:
+			i = 3;
+			break;
+		case 2:
+			i = 3;
+			break;
+		case 3:
+			i = 3;
+			break;
+		default:
+			i = 4;
+			break;
+		}
+		Intent intent = new Intent("com.hq.data.DATA_TRANSMISSION");
+		intent.putExtra("data", i);
+		mContext.sendBroadcast(intent);
+	}
 }

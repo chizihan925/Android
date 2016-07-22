@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="1dp"
+    android:background="@drawable/bg_gv"
+    android:orientation="horizontal" >
+
+    <LinearLayout
+        android:id="@+id/del_menu"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:padding="3dp" >
+
+        <ImageView
+            android:id="@+id/delete_word_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/ic_toolbar_delete" />
+
+        <TextView
+            android:id="@+id/delete_word_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/delete_word"
+            android:textColor="@color/black"
+            android:textSize="10dip" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/copy_menu_item"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:padding="3dp" >
+
+        <ImageView
+            android:id="@+id/copy_word_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/ic_toolbar_copy" />
+
+        <TextView
+            android:id="@+id/copy_word_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/copy_word"
+            android:textColor="@color/black"
+            android:textSize="10dip" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/clip_menu"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:padding="3dp" >
+
+        <ImageView
+            android:id="@+id/clip_word_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/ic_toolbar_cut" />
+
+        <TextView
+            android:id="@+id/clip_word_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/clip_word"
+            android:textColor="@color/black"
+            android:textSize="10dip" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/item_menu"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="60dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:padding="3dp" >
+
+        <ImageView
+            android:id="@+id/item_menu_word_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/ic_toolbar_menu" />
+
+        <TextView
+            android:id="@+id/item_menu_word_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/menu_word"
+            android:textColor="@color/black"
+            android:textSize="10dip" />
+    </LinearLayout>
+
+</LinearLayout>

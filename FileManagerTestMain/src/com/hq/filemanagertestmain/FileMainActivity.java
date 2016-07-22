@@ -10,6 +10,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -27,7 +31,7 @@ public class FileMainActivity extends FragmentActivity {
 	private FragmentAdapter mFragmentAdapter;
 
 	private LinearLayout mClassify, mLocal;
-	private View mBottomItem;
+	private View mBottomItem1, mBottomItem2, mBottomItem3, mBottomItem4;
 	private ViewPager mPageVp;
 	private TextView mTabChatTv, mTabFriendTv;
 	private ImageView mTabLineIv;
@@ -36,11 +40,19 @@ public class FileMainActivity extends FragmentActivity {
 	private int currentIndex;
 	private int screenWidth;
 
+	private MyBroadCastReceiver mReceiver;
+	private int itemCode;
+	private int itemCodeOld;
+	private int itemCodeLocal;
+	private int itemCodeLocalOld;
+	private int mPosition;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_file_main);
+		Log.d("chiguoqing", "1" + this.toString());
 		findById();
 		init();
 		initTabLineWidth();
@@ -67,16 +79,26 @@ public class FileMainActivity extends FragmentActivity {
 		mTabFriendTv = (TextView) this.findViewById(R.id.id_friend_tv);
 		mTabLineIv = (ImageView) this.findViewById(R.id.id_tab_line_iv);
 		mPageVp = (ViewPager) this.findViewById(R.id.id_page_vp);
-		mBottomItem = (View) this.findViewById(R.id.bottom_item);
+		mBottomItem1 = (View) this.findViewById(R.id.bottom_item1);
+		mBottomItem2 = (View) this.findViewById(R.id.bottom_item2);
+		mBottomItem3 = (View) this.findViewById(R.id.bottom_item3);
+		mBottomItem4 = (View) this.findViewById(R.id.bottom_item4);
 		mClassify = (LinearLayout) this.findViewById(R.id.id_tab_chat_ll);
 		mLocal = (LinearLayout) findViewById(R.id.id_tab_friend_ll);
+		mReceiver = new MyBroadCastReceiver();
 	}
 
 	private void init() {
+
 		mFriendFg = new FriendFragment();
 		mChatFg = new ChatFragment();
 		mFragmentList.add(mChatFg);
 		mFragmentList.add(mFriendFg);
+
+		itemCode = 0;
+		itemCodeOld = 0;
+		itemCodeLocal = 0;
+		itemCodeLocalOld = 0;
 
 		mFragmentAdapter = new FragmentAdapter(
 				this.getSupportFragmentManager(), mFragmentList);
@@ -112,12 +134,15 @@ public class FileMainActivity extends FragmentActivity {
 			}
 
 			public void onPageSelected(int position) {
+				mPosition = position;
 				switch (position) {
 				case 0:
 					mTabChatTv.setTextColor(Color.WHITE);
+					updateItemUI(itemCode);
 					break;
 				case 1:
 					mTabFriendTv.setTextColor(Color.WHITE);
+					updateItemUI(itemCodeLocal);
 					break;
 				}
 				currentIndex = position;
@@ -151,4 +176,84 @@ public class FileMainActivity extends FragmentActivity {
 		}
 	}
 
+	class MyBroadCastReceiver extends BroadcastReceiver {
+
+		@Override
+		public void onReceive(Context arg0, Intent intent) {
+			int i = intent.getIntExtra("data", 4);
+			setItemCode(i);
+			updateItemUI(i);
+			Log.d("chiguoqing", "Activity --- " + i);
+		}
+
+	}
+
+	private void updateItemUI(int i) {
+		switch (i) {
+		case 2:
+			mBottomItem1.setVisibility(View.GONE);
+			mBottomItem2.setVisibility(View.VISIBLE);
+			mBottomItem3.setVisibility(View.GONE);
+			mBottomItem4.setVisibility(View.GONE);
+			break;
+		case 3:
+			mBottomItem1.setVisibility(View.GONE);
+			mBottomItem2.setVisibility(View.GONE);
+			mBottomItem3.setVisibility(View.VISIBLE);
+			mBottomItem4.setVisibility(View.GONE);
+			break;
+		case 4:
+			mBottomItem1.setVisibility(View.GONE);
+			mBottomItem2.setVisibility(View.GONE);
+			mBottomItem3.setVisibility(View.GONE);
+			mBottomItem4.setVisibility(View.VISIBLE);
+			break;
+		default:
+			mBottomItem1.setVisibility(View.VISIBLE);
+			mBottomItem2.setVisibility(View.GONE);
+			mBottomItem3.setVisibility(View.GONE);
+			mBottomItem4.setVisibility(View.GONE);
+			break;
+		}
+	}
+
+	@Override
+	protected void onStart() {
+		super.onStart();
+		IntentFilter filter = new IntentFilter();
+		filter.addAction("com.hq.data.DATA_TRANSMISSION");
+		this.registerReceiver(mReceiver, filter);
+	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		this.unregisterReceiver(mReceiver);
+	}
+
+	@Override
+	public void onBackPressed() {
+		super.onBackPressed();
+		Log.d("chiguoqingCode","mPosition= "+mPosition+"; itemCode= "+itemCode+": itemCodeLocal"+itemCodeLocal);
+		if(mPosition == 0 && itemCode != 0){
+			mBottomItem1.setVisibility(View.VISIBLE);
+			mBottomItem2.setVisibility(View.GONE);
+			mBottomItem3.setVisibility(View.GONE);
+			mBottomItem4.setVisibility(View.GONE);
+		}else if(mPosition == 1 && itemCodeLocal != 0){
+			mBottomItem1.setVisibility(View.VISIBLE);
+			mBottomItem2.setVisibility(View.GONE);
+			mBottomItem3.setVisibility(View.GONE);
+			mBottomItem4.setVisibility(View.GONE);
+		}
+		
+	}
+
+	private void setItemCode(int i) {
+		if (mPosition == 0) {
+			itemCode = i;
+		} else {
+			itemCodeLocal = i;
+		}
+	}
 }
