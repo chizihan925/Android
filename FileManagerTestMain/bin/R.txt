@@ -402,7 +402,7 @@ int id action_context_bar 0x7f09001d
 int id action_menu_divider 0x7f090002
 int id action_menu_presenter 0x7f090003
 int id action_mode_close_button 0x7f090024
-int id action_settings 0x7f090072
+int id action_settings 0x7f090074
 int id activity_chooser_view_content 0x7f090025
 int id always 0x7f09000f
 int id beginning 0x7f090016
@@ -441,6 +441,8 @@ int id file_info 0x7f090067
 int id file_name 0x7f090066
 int id filelist 0x7f09006c
 int id gridview 0x7f090070
+int id heart_word_iv 0x7f090071
+int id heart_word_tv 0x7f090072
 int id home 0x7f090000
 int id homeAsUp 0x7f09000a
 int id icon 0x7f09002a
@@ -499,7 +501,7 @@ int id tv_item 0x7f090069
 int id up 0x7f090021
 int id useLogo 0x7f09000e
 int id withText 0x7f090013
-int id yuandian 0x7f090071
+int id yuandian 0x7f090073
 int integer abc_max_action_buttons 0x7f080000
 int layout abc_action_bar_decor 0x7f030000
 int layout abc_action_bar_decor_include 0x7f030001
@@ -541,8 +543,9 @@ int layout gridview_click_fragment 0x7f030024
 int layout insert_storage_list 0x7f030025
 int layout insert_storage_list_item 0x7f030026
 int layout lattice_main 0x7f030027
-int layout point 0x7f030028
-int layout support_simple_spinner_dropdown_item 0x7f030029
+int layout menu_main 0x7f030028
+int layout point 0x7f030029
+int layout support_simple_spinner_dropdown_item 0x7f03002a
 int menu file_main 0x7f0d0000
 int string Top_Classify 0x7f0a000e
 int string Top_Local 0x7f0a000f
@@ -783,7 +786,7 @@ int styleable MenuItem_android_title 7
 int styleable MenuItem_android_titleCondensed 8
 int styleable MenuItem_android_visible 4
 int styleable MenuItem_showAsAction 13
-int[] styleable MenuView { 0x010100ae, 0x0101012c, 0x0101012d, 0x0101012e, 0x0101012f, 0x01010130, 0x01010131, 0x01010438 }
+int[] styleable MenuView { 0x010100ae, 0x0101012c, 0x0101012d, 0x0101012e, 0x0101012f, 0x01010130, 0x01010131, 0x0101052f }
 int styleable MenuView_android_headerBackground 4
 int styleable MenuView_android_horizontalDivider 2
 int styleable MenuView_android_itemBackground 5

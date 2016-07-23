@@ -1249,7 +1249,7 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f090002;
         public static final int action_menu_presenter=0x7f090003;
         public static final int action_mode_close_button=0x7f090024;
-        public static final int action_settings=0x7f090072;
+        public static final int action_settings=0x7f090074;
         public static final int activity_chooser_view_content=0x7f090025;
         public static final int always=0x7f09000f;
         public static final int beginning=0x7f090016;
@@ -1288,6 +1288,8 @@ containing a value of this type.
         public static final int file_name=0x7f090066;
         public static final int filelist=0x7f09006c;
         public static final int gridview=0x7f090070;
+        public static final int heart_word_iv=0x7f090071;
+        public static final int heart_word_tv=0x7f090072;
         public static final int home=0x7f090000;
         public static final int homeAsUp=0x7f09000a;
         public static final int icon=0x7f09002a;
@@ -1346,7 +1348,7 @@ containing a value of this type.
         public static final int up=0x7f090021;
         public static final int useLogo=0x7f09000e;
         public static final int withText=0x7f090013;
-        public static final int yuandian=0x7f090071;
+        public static final int yuandian=0x7f090073;
     }
     public static final class integer {
         /**  The maximum number of action buttons that should be permitted within
@@ -1414,8 +1416,9 @@ containing a value of this type.
         public static final int insert_storage_list=0x7f030025;
         public static final int insert_storage_list_item=0x7f030026;
         public static final int lattice_main=0x7f030027;
-        public static final int point=0x7f030028;
-        public static final int support_simple_spinner_dropdown_item=0x7f030029;
+        public static final int menu_main=0x7f030028;
+        public static final int point=0x7f030029;
+        public static final int support_simple_spinner_dropdown_item=0x7f03002a;
     }
     public static final class menu {
         public static final int file_main=0x7f0d0000;
@@ -2851,7 +2854,7 @@ containing a value of this type.
          */
         public static final int[] MenuView = {
             0x010100ae, 0x0101012c, 0x0101012d, 0x0101012e,
-            0x0101012f, 0x01010130, 0x01010131, 0x01010438
+            0x0101012f, 0x01010130, 0x01010131, 0x0101052f
         };
         /**
           <p>

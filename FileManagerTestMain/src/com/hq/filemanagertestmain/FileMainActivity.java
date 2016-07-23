@@ -46,6 +46,7 @@ public class FileMainActivity extends FragmentActivity {
 	private int itemCodeLocal;
 	private int itemCodeLocalOld;
 	private int mPosition;
+	private int mIterfaceCode,mInterfaceCodeLocal;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -99,6 +100,16 @@ public class FileMainActivity extends FragmentActivity {
 		itemCodeOld = 0;
 		itemCodeLocal = 0;
 		itemCodeLocalOld = 0;
+		/*Control "classification" interface(in classification) whether in first or second
+		 * 0:in the first interface
+		 * 1:in the second interface
+		 */
+		mIterfaceCode = 0;
+		/*Control "local" interface(in classification) whether in first or second
+		 * 2:in the first interface
+		 * 3:in the second interface
+		 */
+		mInterfaceCodeLocal = 2;
 
 		mFragmentAdapter = new FragmentAdapter(
 				this.getSupportFragmentManager(), mFragmentList);
@@ -181,6 +192,8 @@ public class FileMainActivity extends FragmentActivity {
 		@Override
 		public void onReceive(Context arg0, Intent intent) {
 			int i = intent.getIntExtra("data", 4);
+			mIterfaceCode = intent.getIntExtra("code", 0);
+			mInterfaceCodeLocal = intent.getIntExtra("codeLocal", 2);
 			setItemCode(i);
 			updateItemUI(i);
 			Log.d("chiguoqing", "Activity --- " + i);
@@ -195,24 +208,32 @@ public class FileMainActivity extends FragmentActivity {
 			mBottomItem2.setVisibility(View.VISIBLE);
 			mBottomItem3.setVisibility(View.GONE);
 			mBottomItem4.setVisibility(View.GONE);
+			mIterfaceCode = 1;
+			mInterfaceCodeLocal = 3;
 			break;
 		case 3:
 			mBottomItem1.setVisibility(View.GONE);
 			mBottomItem2.setVisibility(View.GONE);
 			mBottomItem3.setVisibility(View.VISIBLE);
 			mBottomItem4.setVisibility(View.GONE);
+			mIterfaceCode = 1;
+			mInterfaceCodeLocal = 3;
 			break;
 		case 4:
 			mBottomItem1.setVisibility(View.GONE);
 			mBottomItem2.setVisibility(View.GONE);
 			mBottomItem3.setVisibility(View.GONE);
 			mBottomItem4.setVisibility(View.VISIBLE);
+			mIterfaceCode = 1;
+			mInterfaceCodeLocal = 3;
 			break;
 		default:
 			mBottomItem1.setVisibility(View.VISIBLE);
 			mBottomItem2.setVisibility(View.GONE);
 			mBottomItem3.setVisibility(View.GONE);
 			mBottomItem4.setVisibility(View.GONE);
+			mIterfaceCode = 0;
+			mInterfaceCodeLocal = 2;
 			break;
 		}
 	}
@@ -235,18 +256,21 @@ public class FileMainActivity extends FragmentActivity {
 	public void onBackPressed() {
 		super.onBackPressed();
 		Log.d("chiguoqingCode","mPosition= "+mPosition+"; itemCode= "+itemCode+": itemCodeLocal"+itemCodeLocal);
-		if(mPosition == 0 && itemCode != 0){
+		Log.d("chiguoqingInter", "mIterfaceCode = "+mIterfaceCode);
+		Log.d("chiguoqingInter", "mInterfaceCodeLocal = "+mInterfaceCodeLocal);
+		if(mPosition == 0 && itemCode != 0 && mIterfaceCode == 1){
 			mBottomItem1.setVisibility(View.VISIBLE);
 			mBottomItem2.setVisibility(View.GONE);
 			mBottomItem3.setVisibility(View.GONE);
 			mBottomItem4.setVisibility(View.GONE);
-		}else if(mPosition == 1 && itemCodeLocal != 0){
+			mIterfaceCode = 0;
+		}else if(mPosition == 1 && itemCodeLocal != 0 && mInterfaceCodeLocal == 3){
 			mBottomItem1.setVisibility(View.VISIBLE);
 			mBottomItem2.setVisibility(View.GONE);
 			mBottomItem3.setVisibility(View.GONE);
 			mBottomItem4.setVisibility(View.GONE);
+			mInterfaceCodeLocal = 2;
 		}
-		
 	}
 
 	private void setItemCode(int i) {

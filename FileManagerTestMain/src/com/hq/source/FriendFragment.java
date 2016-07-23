@@ -34,6 +34,13 @@ public class FriendFragment extends Fragment {
 	private String mExternalUsedStorage;
 	private StorageState mStorageState = new StorageState();
 	private ListView mLocalList;
+	
+	/*
+	 * Control the interface whether go to second 
+	 * 2:in the first interface
+	 * 3:in the second interface
+	 */
+	private int mInterfaceCodeLocal;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -61,6 +68,9 @@ public class FriendFragment extends Fragment {
 	}
 
 	private void initialize() {
+		
+		mInterfaceCodeLocal = 2;
+		
 		mTotalStorage = mStorageState.formatFileSize(mStorageState
 				.getTotalInternalMemorySize());
 		mAvailableStorage = mStorageState.formatFileSize(mStorageState
@@ -97,6 +107,7 @@ public class FriendFragment extends Fragment {
 					InternalStorageFragment fragment1 = new InternalStorageFragment();
 					addFragment(fragment1, "InternalStorageFragment");
 					Intent intent = new Intent("com.hq.data.DATA_TRANSMISSION");
+					intent.putExtra("codeLocal", mInterfaceCodeLocal);
 					intent.putExtra("data", 3);
 					mContext.sendBroadcast(intent);
 				} else if (position == 1) {
@@ -113,8 +124,8 @@ public class FriendFragment extends Fragment {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("ItemImage_left", R.drawable.ic_classify_internalstorage);
 		map.put("ItemImage", R.drawable.list_arrow);
-		map.put("ItemTitle", "内部存储");
-		map.put("ItemText", "已用： " + mUsedStorage + ", " + "可用： "
+		map.put("ItemTitle", "鍐呴儴瀛樺偍");
+		map.put("ItemText", "宸茬敤锛� " + mUsedStorage + ", " + "鍙敤锛� "
 				+ mAvailableStorage);
 		list.add(map);
 
@@ -122,8 +133,8 @@ public class FriendFragment extends Fragment {
 			map = new HashMap<String, Object>();
 			map.put("ItemImage_left", R.drawable.ic_classify_sdcard);
 			map.put("ItemImage", R.drawable.list_arrow);
-			map.put("ItemTitle", "SD 卡");
-			map.put("ItemText", "已用： " + mExternalUsedStorage + ", " + "可用： "
+			map.put("ItemTitle", "SD 鍗�");
+			map.put("ItemText", "宸茬敤锛� " + mExternalUsedStorage + ", " + "鍙敤锛� "
 					+ mExternalAvailableStorage);
 			list.add(map);
 		}

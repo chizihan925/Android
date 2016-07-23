@@ -31,6 +31,13 @@ public class ChatFragmentReal extends Fragment implements OnItemClickListener {
 	private Fragment gridviewclickfragmenmt;
 
 	private android.support.v4.app.FragmentTransaction filemanger;
+	
+	/*
+	 * Control the interface whether go to second 
+	 * 0:in the first interface
+	 * 1:in the second interface
+	 */
+	private int mInterfaceCode;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -52,6 +59,8 @@ public class ChatFragmentReal extends Fragment implements OnItemClickListener {
 	private void init() {
 		
 		getResources().getStringArray(R.array.grid_name);
+		
+		mInterfaceCode = 0;
 
 		gridview = (MyGridView) getView().findViewById(R.id.gridview);
 		gridview.setAdapter(new MyGridAdapter(mContext));
@@ -105,22 +114,28 @@ public class ChatFragmentReal extends Fragment implements OnItemClickListener {
 		switch (gridSelect) {
 		case 0:
 			i = 2;
+			mInterfaceCode = 1;
 			break;
 		case 1:
 			i = 3;
+			mInterfaceCode = 1;
 			break;
 		case 2:
 			i = 3;
+			mInterfaceCode = 1;
 			break;
 		case 3:
 			i = 3;
+			mInterfaceCode = 1;
 			break;
 		default:
 			i = 4;
+			mInterfaceCode = 0;
 			break;
 		}
 		Intent intent = new Intent("com.hq.data.DATA_TRANSMISSION");
 		intent.putExtra("data", i);
+		intent.putExtra("code", mInterfaceCode);
 		mContext.sendBroadcast(intent);
 	}
 }

@@ -114,15 +114,19 @@ public class CircleView extends View {
 		long usedStorage = mStorageState.getTotalInternalMemorySize()
 				- mStorageState.getAvailableInternalMemorySize();
 		mUsedStorage = usedStorage;
-		mInternalPercentage = String
-				.valueOf(mUsedStorage * 100 / mTotalStorage);
-
+		if(mTotalStorage != 0){
+			mInternalPercentage = String
+					.valueOf(mUsedStorage * 100 / mTotalStorage);
+		}
+		
 		mExternalTotalStorage = mStorageState.getTotalExternalMemorySize();
 		long externalUsedStorage = mStorageState.getTotalExternalMemorySize()
 				- mStorageState.getAvailableExternalMemorySize();
 		mExternalUsedStorage = externalUsedStorage;
-		mExternalPercentage = String.valueOf(mExternalUsedStorage * 100
-				/ mExternalTotalStorage);
-
+		if(mExternalTotalStorage != 0){
+			mExternalPercentage = String.valueOf(mExternalUsedStorage * 100
+					/ mExternalTotalStorage);
+		}
+		
 	}
 }
